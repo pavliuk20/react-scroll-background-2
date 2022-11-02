@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 /* eslint-disable no-mixed-operators */
-// code taken and adjusted from rgb-hex because their module concentrates on node env
+// code taken and adjusted from rgb-hex v.1 because their module concentrates on node env
 exports.default = function (red, green, blue, alpha) {
 	var isPercent = (red + (alpha || '')).toString().includes('%');
 

@@ -3,40 +3,39 @@
 This module provides an easy way to transition the background color when you scroll through a specified element within the page. An example can be found [here](https://mkarabashev.github.io/react-scroll-background/)
 
 ### Install
+
 ```js
-$ npm install scroll-background
+$ npm install scroll-background-2
 ```
 
 ### Run
+
 ```js
 $ npm install
 $ npm test
 $ npm run build
 ```
-### Usage
-```js
 
-import React from 'react';
-import { render } from 'react-dom';
-import { AnimatedBg, Transition } from 'scroll-background';
+### Usage
+
+```js
+import React from "react";
+import { render } from "react-dom";
+import { AnimatedBg, Transition } from "scroll-background-2";
 
 const Example = () => (
-  <AnimatedBg>
-    <div style={{ height: '900px' }} />
-    <Transition height="400px" from="#0D47A1" to="#388E3C" />
-    <div style={{ height: '900px' }} />
-    <Transition height="400px" from="#388E3C" to="#FFA000" position={0.75}>
-      <h1>Content that appears within the transition</h1>
-    </Transition>
-    <div style={{ height: '900px' }} />
-  </AnimatedBg>
-)
-
-render(
-  <Example />,
-  document.getElementById('root')
+ <AnimatedBg>
+  <div style={{ height: "900px" }} />
+  <Transition height="400px" from="#0D47A1" to="#388E3C" />
+  <div style={{ height: "900px" }} />
+  <Transition height="400px" from="#388E3C" to="#FFA000" position={0.75}>
+   <h1>Content that appears within the transition</h1>
+  </Transition>
+  <div style={{ height: "900px" }} />
+ </AnimatedBg>
 );
 
+render(<Example />, document.getElementById("root"));
 ```
 
 ### Transition Props/Options

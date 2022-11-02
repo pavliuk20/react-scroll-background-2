@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -10,19 +10,19 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require('prop-types');
+var _propTypes = require("prop-types");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _hexRgb = require('../utils/hex-rgb');
+var _hexRgb = require("../utils/hex-rgb");
 
 var _hexRgb2 = _interopRequireDefault(_hexRgb);
 
-var _rgbHex = require('../utils/rgb-hex');
+var _rgbHex = require("../utils/rgb-hex");
 
 var _rgbHex2 = _interopRequireDefault(_rgbHex);
 
@@ -50,28 +50,27 @@ var Transition = function (_Component) {
   }
 
   _createClass(Transition, [{
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
       this.handleBg();
-      window.addEventListener('resize', function () {
+      window.addEventListener("resize", function () {
         return _this2.handleBg();
       });
-      window.addEventListener('scroll', function () {
+      window.addEventListener("scroll", function () {
         return _this2.handleBg();
       });
     }
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      window.removeEventListener('resize');
-      window.removeEventListener('scroll');
+      window.removeEventListener("resize", null);
+      window.removeEventListener("scroll", null);
     }
   }, {
-    key: 'handleBg',
+    key: "handleBg",
     value: function handleBg() {
-      // props and fns
       var calcPosition = this.calcPosition,
           calcProgress = this.calcProgress,
           determineBg = this.determineBg,
@@ -81,8 +80,6 @@ var Transition = function (_Component) {
           eventKey = _props.eventKey,
           handleTransition = _props.handleTransition;
 
-      // position of the elements
-
       var _calcPosition = calcPosition(),
           vh = _calcPosition.vh,
           beginPos = _calcPosition.beginPos,
@@ -91,20 +88,20 @@ var Transition = function (_Component) {
       // send back the bg color
 
 
-      if (vh < beginPos) handleTransition(eventKey, from, 'pre');else if (vh > endPos) handleTransition(eventKey, to, 'post');else handleTransition(eventKey, determineBg(calcProgress(beginPos, endPos, vh)), 'current');
+      if (vh < beginPos) handleTransition(eventKey, from, "pre");else if (vh > endPos) handleTransition(eventKey, to, "post");else handleTransition(eventKey, determineBg(calcProgress(beginPos, endPos, vh)), "current");
     }
 
     // fns for calculating element position
 
   }, {
-    key: 'calcPosition',
+    key: "calcPosition",
     value: function calcPosition() {
       var begin = this.begin,
           end = this.end,
           position = this.props.position;
 
 
-      var shouldConfigureVhPos = typeof position === 'number' && position >= 0 && position <= 1;
+      var shouldConfigureVhPos = typeof position === "number" && position >= 0 && position <= 1;
 
       var vh = window.innerHeight * (shouldConfigureVhPos ? position : 0.5);
       var beginPos = begin.getBoundingClientRect().bottom;
@@ -114,28 +111,28 @@ var Transition = function (_Component) {
       return { vh: vh, beginPos: beginPos, endPos: endPos };
     }
   }, {
-    key: 'calcProgress',
+    key: "calcProgress",
     value: function calcProgress(begin, end, current) {
       return (current - begin) / (end - begin);
     }
   }, {
-    key: 'calcRange',
+    key: "calcRange",
     value: function calcRange(start, finish) {
       return finish - start;
     }
 
     /**
-    * fns for calculating the bg color
-    * progress is determined by element pos
-    **/
+     * fns for calculating the bg color
+     * progress is determined by element pos
+     **/
 
   }, {
-    key: 'calcColorVector',
+    key: "calcColorVector",
     value: function calcColorVector(start, finish, progress) {
       return start + this.calcRange(start, finish) * progress;
     }
   }, {
-    key: 'determineBg',
+    key: "determineBg",
     value: function determineBg(progress) {
       var calcColorVector = this.calcColorVector,
           _props2 = this.props,
@@ -154,22 +151,23 @@ var Transition = function (_Component) {
           fG = _hexToRgb4[1],
           fB = _hexToRgb4[2];
 
-      return '#' + (0, _rgbHex2.default)(calcColorVector(sR, fR, progress), calcColorVector(sG, fG, progress), calcColorVector(sB, fB, progress));
+      return "#" + (0, _rgbHex2.default)(calcColorVector(sR, fR, progress), calcColorVector(sG, fG, progress), calcColorVector(sB, fB, progress));
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _this3 = this;
 
       var _props3 = this.props,
-          height = _props3.height,
+          _props3$height = _props3.height,
+          height = _props3$height === undefined ? 0 : _props3$height,
           children = _props3.children;
 
 
-      return _jsx('div', {}, void 0, _react2.default.createElement('div', { ref: function ref(node) {
+      return _jsx("div", {}, void 0, _react2.default.createElement("div", { ref: function ref(node) {
           return _this3.begin = node;
         } }), _react2.default.createElement(
-        'div',
+        "div",
         { ref: function ref(node) {
             return _this3.end = node;
           }, style: { height: height } },
