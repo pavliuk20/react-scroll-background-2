@@ -56,8 +56,8 @@ class Transition extends Component {
    typeof position === "number" && position >= 0 && position <= 1;
 
   const vh = window.innerHeight * (shouldConfigureVhPos ? position : 0.5);
-  const beginPos = begin?.getBoundingClientRect()?.bottom;
-  const endPos = end?.getBoundingClientRect()?.bottom;
+  const beginPos = begin ? begin.getBoundingClientRect().bottom : null;
+  const endPos = end ? end.getBoundingClientRect().bottom : null;
 
   // window height and offset position of the elements
   return { vh, beginPos, endPos };
