@@ -1,7 +1,7 @@
 {
  "name": "scroll-background-2",
  "author": "Alex Pavlyuk",
- "version": "1.0.0",
+ "version": "1.0.1",
  "description": "background color transition on scroll",
  "repository": {
   "type": "git",
