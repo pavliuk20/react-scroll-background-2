@@ -99,12 +99,16 @@ class Transition extends Component {
  }
 
  render() {
-  const { height = 0, children } = this.props;
+  const { className, height = 0, children } = this.props;
 
   return (
    <div>
     <div ref={(node) => (this.begin = node)} />
-    <div ref={(node) => (this.end = node)} style={{ height }}>
+    <div
+     ref={(node) => (this.end = node)}
+     className={className}
+     style={{ height }}
+    >
      {children}
     </div>
    </div>
@@ -115,6 +119,7 @@ class Transition extends Component {
 Transition.propTypes = {
  eventKey: PropTypes.number,
  handleTransition: PropTypes.func,
+ className: PropTypes.string,
  height: PropTypes.string,
  from: PropTypes.string.isRequired,
  to: PropTypes.string.isRequired,

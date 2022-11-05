@@ -159,6 +159,7 @@ var Transition = function (_Component) {
       var _this3 = this;
 
       var _props3 = this.props,
+          className = _props3.className,
           _props3$height = _props3.height,
           height = _props3$height === undefined ? 0 : _props3$height,
           children = _props3.children;
@@ -168,9 +169,13 @@ var Transition = function (_Component) {
           return _this3.begin = node;
         } }), _react2.default.createElement(
         "div",
-        { ref: function ref(node) {
+        {
+          ref: function ref(node) {
             return _this3.end = node;
-          }, style: { height: height } },
+          },
+          className: className,
+          style: { height: height }
+        },
         children
       ));
     }
